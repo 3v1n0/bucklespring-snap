@@ -1,11 +1,11 @@
 name: bucklespring
-version: '1.4.0+git'
+version: '1.4.0+git-snap1'
 summary: Nostalgia bucklespring keyboard sound
 description: |
   This project emulates the sound of my old faithful IBM Model-M space saver
   bucklespring keyboard while typing on my notebook, mainly for the purpose of
   annoying the hell out of my coworkers.
-  
+
   Bucklespring runs as a background
   process and plays back the sound of each key pressed and released on your
   keyboard, just as if you were using an IBM Model-M. The sound of each key has
@@ -35,7 +35,7 @@ parts:
 
   buckle:
     plugin: make
-    source: .
+    source: https://github.com/3v1n0/bucklespring.git
     build-packages:
       - pkg-config
       - libopenal-dev
