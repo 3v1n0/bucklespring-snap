@@ -3,6 +3,7 @@
 if ! [ -e "$HOME/.alsoftrc" ]; then
   echo "period_size = 32" > "$HOME/.alsoftrc"
   echo "periods = 4" >> "$HOME/.alsoftrc"
+  echo "allow-moves = true" >> "$HOME/.alsoftrc"
 fi
 
 if ! (echo "$LD_LIBRARY_PATH" | grep -qF pulseaudio); then
