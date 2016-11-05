@@ -35,7 +35,7 @@ parts:
 
   buckle:
     plugin: make
-    source: https://github.com/3v1n0/bucklespring.git
+    source: https://github.com/zevv/bucklespring.git
     build-packages:
       - pkg-config
       - libopenal-dev

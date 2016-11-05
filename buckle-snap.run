@@ -20,4 +20,6 @@ if ! (echo "$LD_LIBRARY_PATH" | grep -qF pulseaudio); then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/usr/lib/$ARCH/pulseaudio
 fi
 
+export BUCKLESPRING_WAV_DIR=$SNAP/wav
+
 exec $SNAP/buckle $*
