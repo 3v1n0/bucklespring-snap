@@ -1,0 +1,26 @@
+From 1c8b1800673ad8489113a66ed1165770e23128f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 28 Apr 2020 13:58:24 +0200
+Subject: [PATCH] scan-x11: Play mouse clicks both on press and release
+
+Closes: #86
+---
+ scan-x11.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scan-x11.c b/scan-x11.c
+index e7533aa..00eaf52 100644
+--- a/scan-x11.c
++++ b/scan-x11.c
+@@ -78,7 +78,7 @@ void key_pressed_cb(XPointer arg, XRecordInterceptData *d)
+ 				break;
+ 			case ButtonPress:
+ 				if(key == -5 || key == -7)
+-					printf("%d\n", key);
++					play(0xff, 1);
+ 				break;
+ 			case ButtonRelease:
+ 				if(key == -5 || key == -7)
+-- 
+2.17.1
+

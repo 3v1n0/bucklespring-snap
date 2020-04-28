@@ -48,6 +48,9 @@ parts:
   buckle:
     plugin: make
     source: https://github.com/zevv/bucklespring.git
+    override-pull: |
+      snapcraftctl pull
+      patch -p1 < $SNAPCRAFT_PROJECT_DIR/patches/scan-x11-Play-mouse-clicks-both-on-press-and-release.patch
     build-packages:
       - pkg-config
       - libopenal-dev
