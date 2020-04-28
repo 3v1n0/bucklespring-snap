@@ -14,6 +14,7 @@ description: |
   distance and direction for a realistic 3D sound palette of pure nostalgic
   bliss.
 
+base: core18
 grade: stable
 confinement: strict
 
@@ -50,4 +51,4 @@ parts:
     filesets:
       launcherset: [ buckle-snap.run ]
     stage: [ $launcherset ]
-    snap: [ $launcherset ]
+    prime: [ $launcherset ]
