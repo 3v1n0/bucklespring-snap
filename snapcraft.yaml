@@ -1,6 +1,6 @@
 name: bucklespring
-version: 1.4.0+git-snap2
 license: GPL-2.0
+adopt-info: buckle
 summary: Nostalgia bucklespring keyboard sound
 description: |
   This project emulates the sound of my old faithful IBM Model-M space saver
@@ -50,6 +50,7 @@ parts:
     source: https://github.com/zevv/bucklespring.git
     override-pull: |
       snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags --exclude="*win32*")"
       patch -p1 < $SNAPCRAFT_PROJECT_DIR/patches/scan-x11-Play-mouse-clicks-both-on-press-and-release.patch
     build-packages:
       - pkg-config
