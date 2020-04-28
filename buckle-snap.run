@@ -6,20 +6,6 @@ if ! [ -e "$HOME/.alsoftrc" ]; then
   echo "allow-moves = true" >> "$HOME/.alsoftrc"
 fi
 
-if ! (echo "$LD_LIBRARY_PATH" | grep -qF pulseaudio); then
-  if [ "$SNAP_ARCH" == "amd64" ]; then
-    ARCH="x86_64-linux-gnu"
-  elif [ "$SNAP_ARCH" == "armhf" ]; then
-    ARCH="arm-linux-gnueabihf"
-  elif [ "$SNAP_ARCH" == "arm64" ]; then
-    ARCH="aarch64-linux-gnu"
-  else
-    ARCH="$SNAP_ARCH-linux-gnu"
-  fi
-
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/usr/lib/$ARCH/pulseaudio
-fi
-
 export BUCKLESPRING_WAV_DIR=$SNAP/wav
 
 exec $SNAP/buckle $*
