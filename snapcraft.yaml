@@ -27,13 +27,23 @@ parts:
   deps:
     plugin: nil
     stage-packages:
+      - libalure1
+      - libasound2
       - libdumb1
       - libflac8
       - libfluidsynth1
       - libmodplug1
       - libmpg123-0
+      - libopenal1
       - libsndfile1
+      - libsndio6.1
       - libvorbisfile3
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxdmcp6
+      - libxext6
+      - libxtst6
 
   buckle:
     plugin: make
