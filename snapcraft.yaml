@@ -51,7 +51,6 @@ parts:
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version "$(git describe --tags --exclude="*win32*")"
-      patch -p1 < $SNAPCRAFT_PROJECT_DIR/patches/scan-x11-Play-mouse-clicks-both-on-press-and-release.patch
     build-packages:
       - pkg-config
       - libopenal-dev
