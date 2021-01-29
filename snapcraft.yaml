@@ -87,6 +87,8 @@ parts:
     plugin: dump
     source: .
     filesets:
-      launcherset: [ buckle-snap.run ]
+      launcherset:
+        - buckle-snap.run
+        - extra-libs
     stage: [ $launcherset ]
     prime: [ $launcherset ]

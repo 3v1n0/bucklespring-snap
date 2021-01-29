@@ -1,0 +1,2 @@
+alure lib is compiled for amd64 only and includes fix for this bug:
+ - https://bugs.launchpad.net/ubuntu/+source/fluidsynth/+bug/1913756
