@@ -14,29 +14,39 @@ description: |
   distance and direction for a realistic 3D sound palette of pure nostalgic
   bliss.
 
-base: core18
+base: core20
 grade: stable
 confinement: strict
 
 apps:
   buckle:
-    command: buckle-snap.run
-    plugs: [x11, pulseaudio]
+    environment:
+      ALWAYS_USE_PULSEAUDIO: '1'
+    command-chain:
+      - snap/command-chain/alsa-launch
+      - buckle-snap.run
+    command: buckle
+    plugs: [x11, audio-playback]
+
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
 
 parts:
   deps:
     plugin: nil
     stage-packages:
       - libalure1
-      - libasound2
       - libdumb1
       - libflac8
-      - libfluidsynth1
+      - libfluidsynth2
       - libmodplug1
       - libmpg123-0
       - libopenal1
       - libsndfile1
-      - libsndio6.1
+      - libsndio7.0
       - libvorbisfile3
       - libx11-6
       - libxau6
@@ -45,18 +55,33 @@ parts:
       - libxext6
       - libxtst6
 
+  alsa-mixin:
+    plugin: dump
+    source: https://github.com/diddlesnaps/snapcraft-alsa.git
+    source-subdir: snapcraft-assets
+    build-packages:
+      - libasound2-dev
+    stage-packages:
+      - libasound2
+      - libasound2-plugins
+
   buckle:
     plugin: make
     source: https://github.com/zevv/bucklespring.git
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version "$(git describe --tags --exclude="*win32*")"
+    override-build: |
+      make
+      cp -v $SNAPCRAFT_PART_BUILD/buckle $SNAPCRAFT_PART_INSTALL
+      cp -va $SNAPCRAFT_PART_BUILD/wav $SNAPCRAFT_PART_INSTALL
     build-packages:
       - pkg-config
       - libopenal-dev
       - libalure-dev
       - libxtst-dev
-    artifacts: ['buckle', 'wav']
+    after:
+      - alsa-mixin
 
   launcher:
     plugin: dump

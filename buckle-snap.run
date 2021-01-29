@@ -8,4 +8,4 @@ fi
 
 export BUCKLESPRING_WAV_DIR=$SNAP/wav
 
-exec $SNAP/buckle $*
+exec "$@"
